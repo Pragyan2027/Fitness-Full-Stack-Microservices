@@ -35,7 +35,7 @@ This system is designed for scalability, security, and modularity — enabling s
 | Service Name          | Description                                                                 | Tech Used                               |
 |------------------------|------------------------------------------------------------------------------|------------------------------------------|
 | 🏃 **Activity Service**      | Manages workout activities, progress tracking, and exercise logs.              | Spring Boot, Kafka, PostgreSQL          |
-| 🥗 **Nutrition Service**     | Handles meal plans, calorie tracking, and nutrition data.                       | Spring Boot, Kafka, PostgreSQL          |
+| 🥗 **Nutrition Service**     | Handles meal plans, calorie tracking, and nutrition data.                       | Spring Boot, Kafka,Spring AI, PostgreSQL          |
 | 👤 **User Service**          | Manages user registration, profiles, and authentication.                        | Spring Boot, Kafka, PostgreSQL          |
 | 🧠 **AI Service**            | Uses **Spring AI** for personalized recommendations & activity predictions.    | Spring Boot, Spring AI, MongoDB         |
 | ⚙️ **Config Server**        | Provides centralized configuration for all microservices.                       | Spring Cloud Config                    |
