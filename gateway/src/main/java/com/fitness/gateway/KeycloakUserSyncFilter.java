@@ -23,25 +23,19 @@ public class KeycloakUserSyncFilter implements WebFilter {
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
         String token = exchange.getRequest().getHeaders().getFirst("Authorization");
 
-        // 1. Get user details from token first.
         RegisterRequest registerRequest = getUserDetails(token);
         if (registerRequest == null || registerRequest.getEmail() == null) {
             log.warn("Could not parse user details or email from token.");
-            // You might want to return an error here instead of continuing
             return chain.filter(exchange);
         }
 
         String email = registerRequest.getEmail();
         String keycloakId = registerRequest.getKeycloakId();
 
-        // 2. Validate using the EMAIL, since that's the unique constraint causing the crash.
-        return userService.validateUser(email) // <-- YOU MUST CREATE THIS METHOD
+        return userService.validateUser(email)
                 .flatMap(exists -> {
                     if (!exists) {
-                        // User does not exist, register them.
                         log.info("User with email {} not found. Registering...", email);
-                        // This registerUser method MUST return a Mono<Void> or Mono<?>
-                        // to signal completion.
                         return userService.registerUser(registerRequest);
                     } else {
                         // User already exists, skip registration.
@@ -50,23 +44,18 @@ public class KeycloakUserSyncFilter implements WebFilter {
                     }
                 })
                 .then(Mono.defer(() -> {
-                    // 3. Always add the header and continue the chain AFTER validation/registration.
                     ServerHttpRequest mutatedRequest = exchange.getRequest().mutate()
-                            .header("X-User-ID", keycloakId) // Use the non-null keycloakId
+                            .header("X-User-ID", keycloakId)
                             .build();
                     return chain.filter(exchange.mutate().request(mutatedRequest).build());
                 }))
                 .onErrorResume(e -> {
-                    // 4. Handle errors during sync
                     log.error("Error during user sync for email {}: {}", email, e.getMessage());
-                    // Don't block the request, just log and continue.
-                    // The downstream service will fail if it needs the user, which is fine.
                     return chain.filter(exchange);
                 });
     }
 
     private RegisterRequest getUserDetails(String token) {
-        // ... your existing method (this is correct)
         try {
             String tokenWithoutBearer = token.replace("Bearer ", "").trim();
             SignedJWT signedJWT = SignedJWT.parse(tokenWithoutBearer);
