@@ -19,7 +19,7 @@ public class ActivityMessageListener {
     @KafkaListener(topics = "activity-events", groupId = "activity-processor-group")
     public void processActivity(Activity activity) {
         try {
-            // The 'activity' object is now ready to use directly!
+
             log.info("Received activity for user: {}", activity.getUserId());
 
             Recommendation recommendation = activityAIService.generateRecommendation(activity);
