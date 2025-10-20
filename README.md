@@ -17,6 +17,7 @@ This system is designed for scalability, security, and modularity — enabling s
 - **OAuth 2.0 / JWT Authentication**
 - **keyCloak Authentication**
 - **Postman API**
+-  **Microservices**
 
 ### 🌐 Frontend
 - **React.js**
