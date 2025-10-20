@@ -21,7 +21,7 @@ public class GeminiService {
     @Value("${gemini.api.key}")
     private String geminiApiKey;
 
-    // The constructor now correctly takes the WebClient bean provided by your config.
+
     public GeminiService(WebClient webClient) {
         this.webClient = webClient;
     }
@@ -38,14 +38,12 @@ public class GeminiService {
 
         try {
             return webClient.post()
-                    // ✅ FIX: Correctly constructs the URL with "?key="
                     .uri(geminiApiUrl + "?key=" + geminiApiKey)
                     .contentType(MediaType.APPLICATION_JSON)
                     .bodyValue(requestBody)
                     .retrieve()
                     .bodyToMono(String.class)
-                    .block(); // Using .block() for simplicity in a non-reactive context
-
+                    .block(); 
         } catch (Exception e) {
             log.error("Error calling Gemini API: {}", e.getMessage());
             return "{\"error\":\"API call failed: " + e.getMessage() + "\"}";
