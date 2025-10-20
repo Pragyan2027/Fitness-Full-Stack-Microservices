@@ -8,13 +8,15 @@ This system is designed for scalability, security, and modularity — enabling s
 ## 🚀 Tech Stack
 
 ### 🖥️ Backend
-- **Java 17**
-- **Spring Boot**
+- **Java 21**
+- **SpringBoot**
 - **Spring Security**
 - **Spring AI**
 - **Spring Cloud (Eureka, Config Server, Gateway)**
 - **Apache Kafka**
 - **OAuth 2.0 / JWT Authentication**
+- **keyCloak Authentication**
+- **Postman API**
 
 ### 🌐 Frontend
 - **React.js**
@@ -70,6 +72,7 @@ Before running the project, make sure you have:
 - 🐦 Apache Kafka
 - 🧰 Node.js (for React frontend)
 - 🔐 OAuth2 Client credentials (configured in Gateway & Auth)
+- 🔐Postman API
 
 ---
 
