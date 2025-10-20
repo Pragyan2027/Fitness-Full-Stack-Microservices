@@ -17,8 +17,6 @@ public class ActivityMessageListener {
     public void handleActivityEvent(Activity activity) {
         log.info("Received activity event: {} for user {}", activity.getActivityType(), activity.getUserId());
 
-        // This is where the magic happens!
-        // It tells the recommendation service to generate new advice.
         recommendationService.generateRecommendationForActivity(activity);
     }
 }
