@@ -83,7 +83,55 @@ Before running the project, make sure you have:
 ```bash
 git clone https://github.com/your-username/fitness-microservices.git
 cd fitness-microservices
+---
+## 2. Start Infrastructure
 
+Run Kafka, PostgreSQL, and MongoDB.
 
-## 🧭 Architecture Overview
+Optionally use Docker Compose for easier setup.
+
+## 3. Start Config & Discovery Servers
+cd config-server
+mvn spring-boot:run
+
+cd ../eureka-server
+mvn spring-boot:run
+
+4. Start Core Services
+cd ../activity-service
+mvn spring-boot:run
+
+cd ../nutrition-service
+mvn spring-boot:run
+
+cd ../user-service
+mvn spring-boot:run
+
+cd ../ai-service
+mvn spring-boot:run
+
+5. Start Gateway
+cd ../gateway
+mvn spring-boot:run
+
+6. Start Frontend
+cd frontend
+npm install
+npm run dev
+
+🧪 Features
+
+✅ User Registration & Login with OAuth2
+
+🏋️ Activity & Nutrition Tracking
+
+🤖 AI-based personalized recommendations
+
+📨 Kafka-based asynchronous communication
+
+🧭 Service discovery & centralized configuration
+
+🔒 Role-based authorization
+
+📊 Real-time dashboards
 
