@@ -8,6 +8,5 @@ import java.util.List;
 @Repository
 public interface NutritionRecommendationRepository extends MongoRepository<NutritionRecommendation, String> {
 
-    // Finds all recommendations for a specific user
     List<NutritionRecommendation> findByUserId(String userId);
 }
