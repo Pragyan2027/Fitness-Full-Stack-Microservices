@@ -64,7 +64,10 @@ This system is designed for scalability, security, and modularity — enabling s
 
 ##  System Architecture
 
-![architecture](architecture.png)
+<p align="center">
+  <img src="architecture.png" alt="Architecture Diagram" width="900"/>
+</p>
+
 ---
 
 
