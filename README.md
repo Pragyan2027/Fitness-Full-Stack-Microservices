@@ -62,19 +62,10 @@ This system is designed for scalability, security, and modularity — enabling s
 
 ---
 
-## 🛠️ Prerequisites
+##  System Architecture
 
-Before running the project, make sure you have:
-
--  Java 21
--  PostgreSQL
--  MongoDB
--  Docker
--  Apache Kafka
--  Node.js (for React frontend)
--  OAuth2 Client credentials (configured in Gateway & Auth)
-- Postman API
-
+Here's an overview:
+![architecture](architecture.png)
 ---
 
 
