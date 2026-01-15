@@ -64,7 +64,6 @@ This system is designed for scalability, security, and modularity — enabling s
 
 ##  System Architecture
 
-Here's an overview:
 ![architecture](architecture.png)
 ---
 
